@@ -67,13 +67,13 @@ tailwind.config = {
   .rule { height:1px; background:#1A1115; }
   .rule-rose { height:1px; background:#E58AAD; }
 
-  /* hairline draw-in */
-  .draw { transform:scaleX(0); transform-origin:left center; transition:transform 1s cubic-bezier(.16,1,.3,1); }
-  .draw.in { transform:scaleX(1); }
+  /* hairline draw-in (JS-gated so no-JS shows everything) */
+  .js .draw { transform:scaleX(0); transform-origin:left center; transition:transform 1s cubic-bezier(.16,1,.3,1); }
+  .draw.in, .js .draw.in { transform:scaleX(1); }
 
-  /* reveal */
-  .reveal { opacity:0; transform:translateY(22px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
-  .reveal.in { opacity:1; transform:none; }
+  /* reveal (JS-gated) */
+  .js .reveal { opacity:0; transform:translateY(22px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in, .js .reveal.in { opacity:1; transform:none; }
 
   /* drop cap */
   .dropcap::first-letter {
@@ -105,6 +105,7 @@ tailwind.config = {
 </head>
 
 <body class="font-body antialiased overflow-x-hidden">
+<script>document.documentElement.className += ' js';</script>
 
 <!-- ===== UTILITY / MASTHEAD BAR ===== -->
 <header class="fixed top-0 inset-x-0 z-50 bg-paper/85 backdrop-blur border-b border-ink/10">
@@ -483,11 +484,25 @@ tailwind.config = {
 </footer>
 
 <script>
-  // reveal + hairline draw
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal, .draw').forEach(el => io.observe(el));
+  // reveal + hairline draw — with a load/scroll failsafe so content is NEVER stuck hidden
+  (function(){
+    var reveals = [].slice.call(document.querySelectorAll('.reveal, .draw'));
+    var show = function(el){ el.classList.add('in'); };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach(function(el){ io.observe(el); });
+      var failsafe = function(){
+        var h = window.innerHeight || document.documentElement.clientHeight || 0;
+        reveals.forEach(function(el){ if (el.getBoundingClientRect().top < h * 0.95) show(el); });
+      };
+      window.addEventListener('load', function(){ setTimeout(failsafe, 400); });
+      window.addEventListener('scroll', failsafe, { passive: true });
+    } else {
+      reveals.forEach(show);
+    }
+  })();
 </script>
 </body>
 </html>
