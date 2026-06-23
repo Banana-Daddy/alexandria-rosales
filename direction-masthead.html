@@ -51,7 +51,11 @@ tailwind.config = {
         inksoft: '#5B4A52',
         blush:   '#F9CBD9',
         blushlt: '#FCE5EC',
-        rose:    '#E58AAD',
+        rose:    '#C04679',
+        roselt:  '#E58AAD',
+      },
+      fontWeight: {
+        '300':'300','400':'400','500':'500','600':'600','700':'700','800':'800',
       },
     },
   },
@@ -61,6 +65,7 @@ tailwind.config = {
   html { scroll-behavior: smooth; }
   body { background:#FFF7FA; color:#1A1115; -webkit-font-smoothing:antialiased; }
   ::selection { background:#F9CBD9; color:#1A1115; }
+  a:focus-visible, button:focus-visible { outline:2px solid #C04679; outline-offset:3px; border-radius:2px; }
 
   .tracky { letter-spacing:.32em; }
   .trackish { letter-spacing:.18em; }
@@ -92,7 +97,7 @@ tailwind.config = {
   .ulink { background-image:linear-gradient(#E58AAD,#E58AAD); background-size:0% 1px; background-repeat:no-repeat; background-position:left bottom; transition:background-size .35s ease; }
   .ulink:hover { background-size:100% 1px; }
 
-  .hero-name { font-size:clamp(3.3rem, 15vw, 11rem); line-height:.82; }
+  .hero-name { font-size:clamp(2.7rem, 13.5vw, 11rem); line-height:.84; }
   .cover-frame { box-shadow:0 30px 70px -30px rgba(26,17,21,.45); }
 
   @media (prefers-reduced-motion: reduce) {
@@ -134,7 +139,7 @@ tailwind.config = {
 
     <!-- name -->
     <div class="relative mt-6 md:mt-10">
-      <span class="vtab absolute -left-1 sm:left-0 top-1 text-[10px] tracky uppercase text-rose hidden xs:block">On the Cover</span>
+      <span class="vtab absolute -left-1 sm:left-0 top-1 text-[10px] tracky uppercase text-rose hidden sm:block">On the Cover</span>
       <h1 class="hero-name font-display font-600 text-center tracking-[-.01em]">
         Alexandria<br><span class="italic font-500">Rosales</span>
       </h1>
@@ -153,10 +158,10 @@ tailwind.config = {
 
     <!-- cover image -->
     <figure class="reveal mt-10 md:mt-14 cover-frame rounded-[2px] overflow-hidden border border-ink/10">
-      <img src="images/hero.jpg" alt="Sun-washed mid-century desert-modern architecture in Palm Springs, baby-pink facade with palms and the San Jacinto mountains" class="w-full h-[44vw] max-h-[520px] object-cover" loading="eager">
+      <img src="images/hero.jpg" alt="Sun-washed mid-century desert-modern architecture in Palm Springs, baby-pink facade with palms and the San Jacinto mountains" class="w-full h-[44vw] max-h-[520px] object-cover" loading="eager" fetchpriority="high">
       <figcaption class="flex items-center justify-between px-4 py-2 text-[10px] tracky uppercase text-inksoft bg-white">
         <span>Fig. 01 — Palm Springs, CA</span>
-        <span>Est. College of the Desert</span>
+        <span>College of the Desert alumna</span>
       </figcaption>
     </figure>
   </section>
@@ -189,9 +194,9 @@ tailwind.config = {
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
       <figure class="md:col-span-5 reveal">
         <div class="overflow-hidden rounded-[2px] border border-ink/10 cover-frame">
-          <img src="images/florals.jpg" alt="Editorial arrangement of pale pink peonies and ranunculus by a window — portrait placeholder" class="w-full object-cover" loading="lazy">
+          <img src="images/florals.jpg" alt="Editorial arrangement of pale pink peonies and ranunculus by a window — portrait placeholder" class="w-full aspect-[4/5] object-cover" loading="lazy">
         </div>
-        <figcaption class="mt-2 text-[10px] tracky uppercase text-inksoft">Portrait — A. Rosales · Coachella Valley</figcaption>
+        <figcaption class="mt-2 text-[10px] tracky uppercase text-inksoft">Editorial — portrait placeholder</figcaption>
       </figure>
       <div class="md:col-span-7">
         <h2 class="font-display text-3xl md:text-5xl font-500 leading-[1.05] mb-6">
@@ -205,7 +210,7 @@ tailwind.config = {
         </p>
         <p class="text-[17px] leading-[1.85] text-ink/90 mb-8">
           The years since moved her from the page to the production calendar: marketing the arts at
-          Coachella Valley Repertory, a 11,000-seat venue at Acrisure Arena, and now events &amp;
+          Coachella Valley Repertory, then the 11,000-seat Acrisure Arena, and now events &amp;
           marketing at <em>Palm Springs Life</em>. The through-line never changed — she knows how to
           make people pay attention.
         </p>
@@ -370,31 +375,34 @@ tailwind.config = {
         <span class="flex-1 rule draw"></span>
         <span class="text-[10px] tracky uppercase text-inksoft">Selected Bylines · The Desert Sun, 2019</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-x-12">
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#" aria-disabled="true">
+      <ul class="grid md:grid-cols-2 gap-x-12">
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 01</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">Palm Springs finalizes new park design; seeks funding</span>
-        </a>
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#">
+          <span class="font-display text-lg md:text-xl leading-snug">Palm Springs finalizes new park design; seeks funding</span>
+        </li>
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 02</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">From monument to park: Joshua Tree turns 83</span>
-        </a>
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#">
+          <span class="font-display text-lg md:text-xl leading-snug">From monument to park: Joshua Tree turns 83</span>
+        </li>
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 03</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">Residents voice ideas for new Whitewater Park</span>
-        </a>
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#">
+          <span class="font-display text-lg md:text-xl leading-snug">Residents voice ideas for new Whitewater Park</span>
+        </li>
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 04</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">Indio High School’s Class of 2019 turns its tassels</span>
-        </a>
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#">
+          <span class="font-display text-lg md:text-xl leading-snug">Indio High School’s Class of 2019 turns its tassels</span>
+        </li>
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 05</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">79 pets find homes at event in Palm Springs</span>
-        </a>
-        <a class="reveal group flex gap-4 py-4 border-b border-ink/10" href="#">
+          <span class="font-display text-lg md:text-xl leading-snug">79 pets find homes at event in Palm Springs</span>
+        </li>
+        <li class="reveal flex gap-4 py-4 border-b border-ink/10">
           <span class="font-display text-rose text-lg shrink-0">№ 06</span>
-          <span class="font-display text-lg md:text-xl leading-snug ulink">Shelters open to homeless, and their furry friends</span>
-        </a>
+          <span class="font-display text-lg md:text-xl leading-snug">Shelters open to homeless, and their furry friends</span>
+        </li>
+      </ul>
+      <div class="reveal mt-8">
+        <a href="https://www.desertsun.com/staff/4388426002/alex-rosales/" target="_blank" rel="noopener" class="ulink inline-flex items-center gap-2 text-sm tracky uppercase text-ink">View the full archive on The Desert Sun →</a>
       </div>
     </div>
   </section>
@@ -471,7 +479,7 @@ tailwind.config = {
       </nav>
     </div>
     <div class="h-px bg-paper/15 my-8"></div>
-    <p class="text-[10px] tracky uppercase text-paper/40 text-center">© 2026 Alexandria Rosales · Portfolio · Coachella Valley, CA</p>
+    <p class="text-[10px] tracky uppercase text-paper/60 text-center">© 2026 Alexandria Rosales · Portfolio · Coachella Valley, CA</p>
   </div>
   <div aria-hidden="true" class="select-none pointer-events-none text-center font-display leading-none text-paper/[.06] -mb-4 md:-mb-8" style="font-size:clamp(4rem,22vw,18rem)">ROSALES</div>
 

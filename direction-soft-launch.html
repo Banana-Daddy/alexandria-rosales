@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexandria Rosales — Events, Marketing & Social</title>
+<title>Alexandria Rosales — Events & Marketing Coordinator</title>
 <meta name="description" content="Events & marketing coordinator in the Coachella Valley. Strategy, social and unforgettable events — make it memorable.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandria Rosales">
-<meta property="og:title" content="Alexandria Rosales — Events, Marketing & Social">
+<meta property="og:title" content="Alexandria Rosales — Events & Marketing Coordinator">
 <meta property="og:description" content="Events & marketing coordinator in the Coachella Valley. Strategy, social and unforgettable events — make it memorable.">
 <meta property="og:url" content="https://banana-daddy.github.io/alexandria-rosales/direction-soft-launch.html">
 <meta property="og:image" content="https://banana-daddy.github.io/alexandria-rosales/images/og-soft.jpg">
@@ -22,7 +22,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alexandria Rosales — Events, Marketing & Social">
+<meta name="twitter:title" content="Alexandria Rosales — Events & Marketing Coordinator">
 <meta name="twitter:description" content="Events & marketing coordinator in the Coachella Valley. Make it memorable.">
 <meta name="twitter:image" content="https://banana-daddy.github.io/alexandria-rosales/images/og-soft.jpg">
 <meta name="twitter:image:alt" content="Alexandria Rosales — make it memorable.">
@@ -52,8 +52,12 @@ tailwind.config = {
         inksoft:'#6E5A63',
         baby:   '#FAD1DF',
         babylt: '#FCE7EF',
-        rose:   '#E26D9B',
-        rosedk: '#C9508A',
+        rose:   '#C04679',
+        roselt: '#E26D9B',
+        rosedk: '#A23A66',
+      },
+      fontWeight: {
+        '300':'300','400':'400','500':'500','600':'600','700':'700','800':'800',
       },
       borderRadius: { '4xl': '2rem' },
     },
@@ -64,6 +68,7 @@ tailwind.config = {
   html { scroll-behavior:smooth; }
   body { background:#FFF5F8; color:#2A1A22; -webkit-font-smoothing:antialiased; }
   ::selection { background:#FAD1DF; color:#2A1A22; }
+  a:focus-visible, button:focus-visible { outline:2px solid #C04679; outline-offset:3px; border-radius:6px; }
 
   .acc { font-family:"Fraunces", serif; font-style:italic; }
   .glass { background:rgba(255,255,255,.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(226,109,155,.18); }
@@ -87,8 +92,8 @@ tailwind.config = {
   .pulse-dot::before{content:"";position:absolute;inset:-5px;border-radius:9999px;background:#E26D9B;opacity:.45;animation:p 1.8s ease-out infinite}
   @keyframes p{0%{transform:scale(.6);opacity:.5}100%{transform:scale(1.8);opacity:0}}
 
-  .btn-rose{background:#E26D9B;color:#fff;transition:background .2s, transform .2s}
-  .btn-rose:hover{background:#C9508A;transform:translateY(-1px)}
+  .btn-rose{background:#C04679;color:#fff;transition:background .2s, transform .2s}
+  .btn-rose:hover, .btn-rose:focus-visible{background:#A23A66;transform:translateY(-1px)}
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
@@ -190,8 +195,9 @@ tailwind.config = {
   <!-- ===== ABOUT ===== -->
   <section id="about" class="max-w-6xl mx-auto px-4 py-16 md:py-24">
     <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-stretch">
-      <div class="reveal tile glass rounded-4xl overflow-hidden md:col-span-5">
-        <img src="images/florals.jpg" alt="Editorial pale-pink floral arrangement — portrait placeholder" class="w-full h-full object-cover">
+      <div class="reveal tile glass rounded-4xl overflow-hidden md:col-span-5 relative">
+        <img src="images/florals.jpg" alt="Editorial floral arrangement — placeholder for portrait" class="w-full h-full object-cover" loading="lazy">
+        <span class="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest text-ink/70 bg-white/75 backdrop-blur rounded-full px-3 py-1">Portrait — placeholder</span>
       </div>
       <div class="reveal tile glass rounded-4xl p-7 md:p-10 md:col-span-7 flex flex-col justify-center">
         <span class="text-[11px] uppercase tracking-widest text-rose">Hello</span>
@@ -205,9 +211,9 @@ tailwind.config = {
           the production calendar.
         </p>
         <p class="text-[16px] leading-relaxed text-ink/85">
-          Since then I’ve marketed the arts at Coachella Valley Repertory, a 11,000-seat venue at
+          Since then I’ve marketed the arts at Coachella Valley Repertory, then the 11,000-seat
           Acrisure Arena, and now events &amp; marketing at <em>Palm Springs Life</em>. I bring a reporter’s
-          eye to every campaign: find the story, then put it where people already are.
+          eye to every campaign: find the story, then put it where people are.
         </p>
       </div>
     </div>
@@ -222,7 +228,7 @@ tailwind.config = {
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
       <div class="reveal tile glass rounded-4xl p-6 lg:row-span-2 lg:col-span-1 flex flex-col justify-between">
         <div class="w-11 h-11 rounded-2xl bg-rose/15 flex items-center justify-center">
-          <svg class="w-6 h-6 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <svg class="w-6 h-6 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
         <div class="mt-8">
           <h3 class="font-display font-600 text-2xl">Event Production</h3>
@@ -231,28 +237,28 @@ tailwind.config = {
       </div>
       <div class="reveal tile glass rounded-4xl p-6" data-d="1">
         <div class="w-10 h-10 rounded-2xl bg-rose/15 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
         </div>
         <h3 class="font-display font-600 text-lg">Brand Marketing</h3>
         <p class="text-inksoft text-sm mt-1 leading-relaxed">Campaigns, lifecycle &amp; partnerships built around a clear message.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6" data-d="2">
         <div class="w-10 h-10 rounded-2xl bg-rose/15 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
         </div>
         <h3 class="font-display font-600 text-lg">Social Media</h3>
         <p class="text-inksoft text-sm mt-1 leading-relaxed">Strategy, content calendars &amp; community that shows up.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6" data-d="1">
         <div class="w-10 h-10 rounded-2xl bg-rose/15 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
         </div>
         <h3 class="font-display font-600 text-lg">Copy &amp; Editorial</h3>
         <p class="text-inksoft text-sm mt-1 leading-relaxed">Newsroom-trained writing &amp; brand voice that reads clean.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6" data-d="2">
         <div class="w-10 h-10 rounded-2xl bg-rose/15 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <svg class="w-5 h-5 text-rosedk" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
         <h3 class="font-display font-600 text-lg">Photography</h3>
         <p class="text-inksoft text-sm mt-1 leading-relaxed">A documentary eye for events, venues &amp; brand imagery.</p>
@@ -272,7 +278,7 @@ tailwind.config = {
     </div>
     <div class="space-y-3 md:space-y-4">
       <div class="reveal tile glass rounded-4xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-8 border-l-4 border-rose">
-        <span class="font-display font-700 text-rose md:w-28 shrink-0">2025 — Now</span>
+        <span class="font-display font-700 text-rose md:w-28 shrink-0">2025–Now</span>
         <div class="flex-1">
           <h3 class="font-display font-600 text-xl md:text-2xl">Events &amp; Marketing Coordinator</h3>
           <p class="text-inksoft text-sm">Palm Springs Life · Palm Springs, CA</p>
@@ -280,7 +286,7 @@ tailwind.config = {
         <p class="text-ink/75 text-sm md:max-w-xs">Signature event series, brand partnerships &amp; the social presence around them.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
-        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2022 — 24</span>
+        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2022–24</span>
         <div class="flex-1">
           <h3 class="font-display font-600 text-xl md:text-2xl">Marketing Coordinator</h3>
           <p class="text-inksoft text-sm">Acrisure Arena · Greater Palm Springs</p>
@@ -288,7 +294,7 @@ tailwind.config = {
         <p class="text-ink/75 text-sm md:max-w-xs">Marketing for the valley’s 11,000-seat arena — concerts, sports &amp; live events.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
-        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2020 — 22</span>
+        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2020–22</span>
         <div class="flex-1">
           <h3 class="font-display font-600 text-xl md:text-2xl">Marketing &amp; Volunteer Coordination</h3>
           <p class="text-inksoft text-sm">Coachella Valley Repertory (CVRep)</p>
@@ -304,7 +310,7 @@ tailwind.config = {
         <p class="text-ink/75 text-sm md:max-w-xs">A summer reporting across the valley — 14 published bylines.</p>
       </div>
       <div class="reveal tile glass rounded-4xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
-        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2018 — 20</span>
+        <span class="font-display font-700 text-inksoft md:w-28 shrink-0">2018–20</span>
         <div class="flex-1">
           <h3 class="font-display font-600 text-xl md:text-2xl">Editor-in-Chief · Station Manager</h3>
           <p class="text-inksoft text-sm">The Chaparral &amp; KCOD · College of the Desert</p>
@@ -332,9 +338,9 @@ tailwind.config = {
       <p class="text-inksoft text-sm mt-3 max-w-md mx-auto">Representative concepts — the kind of on-brand event &amp; lifestyle content I build for a feed.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-      <div class="reveal tile rounded-4xl overflow-hidden bg-white"><img src="images/social-1.jpg" alt="Social concept — make it memorable" class="w-full aspect-square object-cover"></div>
-      <div class="reveal tile rounded-4xl overflow-hidden bg-white" data-d="1"><img src="images/social-2.jpg" alt="Social concept — Save the Date, Coachella Valley" class="w-full aspect-square object-cover"></div>
-      <div class="reveal tile rounded-4xl overflow-hidden bg-white" data-d="2"><img src="images/social-3.jpg" alt="Social concept — the desert edit lifestyle flat-lay" class="w-full aspect-square object-cover"></div>
+      <div class="reveal tile rounded-4xl overflow-hidden bg-white"><img src="images/social-1.jpg" alt="Social concept — typographic quote post" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="reveal tile rounded-4xl overflow-hidden bg-white" data-d="1"><img src="images/social-2.jpg" alt="Social concept — Save the Date event teaser" class="w-full aspect-square object-cover" loading="lazy"></div>
+      <div class="reveal tile rounded-4xl overflow-hidden bg-white" data-d="2"><img src="images/social-3.jpg" alt="Social concept — the desert edit lifestyle flat-lay" class="w-full aspect-square object-cover" loading="lazy"></div>
     </div>
   </section>
 
@@ -369,7 +375,7 @@ tailwind.config = {
       </nav>
     </div>
     <div class="h-px bg-rose/15 my-7"></div>
-    <p class="text-xs text-inksoft text-center">© 2026 Alexandria Rosales · make it memorable</p>
+    <p class="text-xs text-inksoft text-center">© 2026 Alexandria Rosales · Coachella Valley, CA</p>
   </div>
   <div aria-hidden="true" class="select-none pointer-events-none text-center font-display font-800 leading-none text-rose/[.08] -mb-3 md:-mb-6" style="font-size:clamp(3.5rem,20vw,16rem)">ROSALES</div>
 
