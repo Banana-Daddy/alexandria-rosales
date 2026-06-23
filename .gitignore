@@ -1,0 +1,14 @@
+# Large Higgsfield masters — kept locally, not served (HTML references the web-optimized .jpg versions)
+images/hero-ps-facade.png
+images/gradient-mesh.png
+images/paper-texture.png
+images/portrait-florals.png
+images/press-flatlay.png
+images/silk-macro.png
+images/orb-src.jpg
+
+# Archived / superseded renders (kept locally per no-delete rule)
+images/*-rejected-*.svg
+images/*-rejected-*.jpg
+
+.DS_Store

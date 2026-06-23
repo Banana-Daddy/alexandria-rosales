@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge Selection — Alexandria Rosales</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body{background:#FFF5F8;color:#2A1A22;font-family:"DM Sans",sans-serif}
+  .disp{font-family:"Outfit",sans-serif}
+  .tile{transition:transform .25s, box-shadow .25s}
+  .tile:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(201,80,138,.5)}
+  [data-status="use"]{outline:3px solid #E26D9B}
+  [data-status="bench"]{outline:3px solid #9B6DD6;opacity:.85}
+  [data-status="kill"]{outline:3px solid #D14B5A;opacity:.4;filter:grayscale(.4)}
+  .seg.active{background:#2A1A22;color:#fff}
+</style>
+</head>
+<body class="min-h-screen pb-28">
+
+<header class="max-w-6xl mx-auto px-5 pt-10">
+  <div class="flex items-center gap-3">
+    <img src="images/favicon-512.png" class="w-10 h-10 rounded-full bg-white p-1" alt="AR">
+    <div>
+      <h1 class="disp font-800 text-2xl">Forge Selection — Alexandria Rosales</h1>
+      <p class="text-sm text-[#6E5A63]">11 baby-pink assets. Pre-seeded on my picks — flip anything you'd swap. Tags save automatically.</p>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mt-6 text-sm">
+    <span class="text-[#6E5A63] self-center mr-1">Category:</span>
+    <button class="seg active px-3 py-1 rounded-full bg-white border border-[#E26D9B]/30" data-cat="all">All</button>
+    <button class="seg px-3 py-1 rounded-full bg-white border border-[#E26D9B]/30" data-cat="Hero">Hero</button>
+    <button class="seg px-3 py-1 rounded-full bg-white border border-[#E26D9B]/30" data-cat="Brand">Brand</button>
+    <button class="seg px-3 py-1 rounded-full bg-white border border-[#E26D9B]/30" data-cat="Social">Social</button>
+    <button class="seg px-3 py-1 rounded-full bg-white border border-[#E26D9B]/30" data-cat="Texture">Texture</button>
+  </div>
+  <p class="text-xs text-[#6E5A63] mt-3">Hover a tile and press <b>1</b> use · <b>2</b> bench · <b>3</b> kill. Or click the buttons.</p>
+</header>
+
+<main id="grid" class="max-w-6xl mx-auto px-5 mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></main>
+
+<footer class="fixed bottom-0 inset-x-0 bg-white/90 backdrop-blur border-t border-[#E26D9B]/20 px-5 py-3">
+  <div class="max-w-6xl mx-auto flex items-center justify-between gap-4 text-sm">
+    <div id="counts" class="font-500"></div>
+    <div class="flex gap-2">
+      <button id="reset" class="px-4 py-2 rounded-full border border-[#2A1A22]/20">Reset to my picks</button>
+      <button id="copy" class="px-4 py-2 rounded-full bg-[#E26D9B] text-white font-600">Copy selections</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ASSETS = [
+  {id:'monogram', src:'images/favicon-512.png', cat:'Brand',   note:'Didot “AR” monogram → favicon + mark'},
+  {id:'hero',     src:'images/hero.jpg',         cat:'Hero',    note:'Palm Springs desert-modern cover — Dir A hero + OG'},
+  {id:'orb',      src:'images/orb.jpg',          cat:'Hero',    note:'Glossy pink orb — Dir B hero object'},
+  {id:'florals',  src:'images/florals.jpg',      cat:'Brand',   note:'Editorial floral portrait stand-in (until real headshot)'},
+  {id:'social-1', src:'images/social-1.jpg',     cat:'Social',  note:'“make it memorable”'},
+  {id:'social-2', src:'images/social-2.jpg',     cat:'Social',  note:'“Save the Date · Coachella Valley”'},
+  {id:'social-3', src:'images/social-3.jpg',     cat:'Social',  note:'“the desert edit” lifestyle flat-lay'},
+  {id:'mesh',     src:'images/mesh.jpg',         cat:'Texture', note:'Blush aurora glow (ambient)'},
+  {id:'silk',     src:'images/silk.jpg',         cat:'Texture', note:'Blush silk macro'},
+  {id:'flatlay',  src:'images/flatlay.jpg',      cat:'Texture', note:'Press / marketing flat-lay'},
+  {id:'paper',    src:'images/paper.jpg',        cat:'Texture', note:'Blush paper grain'},
+];
+const KEY='ar-forge-tags';
+const seed=()=>Object.fromEntries(ASSETS.map(a=>[a.id,'use'])); // all USE by default
+let tags=JSON.parse(localStorage.getItem(KEY)||'null')||seed();
+let cat='all';
+const save=()=>localStorage.setItem(KEY,JSON.stringify(tags));
+
+function render(){
+  const grid=document.getElementById('grid'); grid.innerHTML='';
+  ASSETS.filter(a=>cat==='all'||a.cat===cat).forEach(a=>{
+    const st=tags[a.id]||'use';
+    const el=document.createElement('div');
+    el.className='tile bg-white rounded-2xl overflow-hidden';
+    el.dataset.status=st; el.dataset.id=a.id;
+    el.innerHTML=`
+      <div class="aspect-square bg-[#FFF7FA]"><img src="${a.src}" class="w-full h-full object-cover" loading="lazy" alt="${a.id}"></div>
+      <div class="p-3">
+        <div class="flex items-center justify-between"><span class="disp font-700 text-sm">${a.id}</span><span class="text-[10px] uppercase tracking-wide text-[#6E5A63]">${a.cat}</span></div>
+        <p class="text-xs text-[#6E5A63] mt-1 leading-snug">${a.note}</p>
+        <div class="flex gap-1 mt-2">
+          <button data-set="use"   class="flex-1 text-xs py-1 rounded-full ${st==='use'?'bg-[#E26D9B] text-white':'bg-[#FCE7EF]'}">Use</button>
+          <button data-set="bench" class="flex-1 text-xs py-1 rounded-full ${st==='bench'?'bg-[#9B6DD6] text-white':'bg-[#F0E7FA]'}">Bench</button>
+          <button data-set="kill"  class="flex-1 text-xs py-1 rounded-full ${st==='kill'?'bg-[#D14B5A] text-white':'bg-[#FAE7E9]'}">Kill</button>
+        </div>
+      </div>`;
+    el.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{tags[a.id]=b.dataset.set;save();render();});
+    grid.appendChild(el);
+  });
+  counts();
+}
+function counts(){
+  const c={use:0,bench:0,kill:0}; Object.values(tags).forEach(v=>c[v]++);
+  document.getElementById('counts').innerHTML=`<span class="text-[#E26D9B]">● ${c.use} use</span> &nbsp; <span class="text-[#9B6DD6]">● ${c.bench} bench</span> &nbsp; <span class="text-[#D14B5A]">● ${c.kill} kill</span>`;
+}
+document.querySelectorAll('.seg').forEach(s=>s.onclick=()=>{document.querySelectorAll('.seg').forEach(x=>x.classList.remove('active'));s.classList.add('active');cat=s.dataset.cat;render();});
+document.getElementById('reset').onclick=()=>{tags=seed();save();render();};
+document.getElementById('copy').onclick=()=>{
+  const g=s=>ASSETS.filter(a=>tags[a.id]===s).map(a=>`- ${a.id} — ${a.note}`).join('\n')||'  (none)';
+  const md=`# Forge selections — Alexandria Rosales\n\n## USE\n${g('use')}\n\n## BENCH\n${g('bench')}\n\n## KILL\n${g('kill')}`;
+  navigator.clipboard.writeText(md).then(()=>{const b=document.getElementById('copy');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy selections',1400);});
+};
+let hovered=null;
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-id]');hovered=t?t.dataset.id:hovered;});
+document.addEventListener('keydown',e=>{const m={'1':'use','2':'bench','3':'kill'};if(hovered&&m[e.key]){tags[hovered]=m[e.key];save();render();}});
+render();
+</script>
+</body>
+</html>
